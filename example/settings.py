@@ -93,6 +93,7 @@ LOGGING = {
     }
 }
 
+TWO_FACTOR_EXTENSION = True
 TWO_FACTOR_CALL_GATEWAY = 'example.gateways.Messages'
 TWO_FACTOR_SMS_GATEWAY = 'example.gateways.Messages'
 PHONENUMBER_DEFAULT_REGION = 'NL'
@@ -100,6 +101,8 @@ PHONENUMBER_DEFAULT_REGION = 'NL'
 SESSION_ENGINE = 'user_sessions.backends.db'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ALLOWED_HOSTS = ['*']
 
 try:
     from .settings_private import *  # noqa
