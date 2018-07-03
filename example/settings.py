@@ -96,6 +96,8 @@ LOGGING = {
 TWO_FACTOR_EXTENSION = True
 TWO_FACTOR_CALL_GATEWAY = 'example.gateways.Messages'
 TWO_FACTOR_SMS_GATEWAY = 'example.gateways.Messages'
+TWO_FACTOR_BASE_URL = None  # Optionally use custom base url if default URL is not correct
+
 PHONENUMBER_DEFAULT_REGION = 'NL'
 
 SESSION_ENGINE = 'user_sessions.backends.db'
