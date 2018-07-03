@@ -45,6 +45,10 @@ class Twilio(object):
     def __init__(self):
         self.client = Client(getattr(settings, 'TWILIO_ACCOUNT_SID'),
                              getattr(settings, 'TWILIO_AUTH_TOKEN'))
+        try:
+            self.base_url = getattr(settings, 'TWO_FACTOR_BASE_URL')
+        except AttributeError:
+            return
 
     def make_call(self, device, token):
         locale = translation.get_language()
@@ -53,7 +57,10 @@ class Twilio(object):
         request = get_current_request()
         url = reverse('two_factor_twilio:call_app', kwargs={'token': token})
         url = '%s?%s' % (url, urlencode({'locale': locale}))
-        uri = request.build_absolute_uri(url)
+        if self.base_url:
+            uri = self.base_url + url
+        else:
+            uri = request.build_absolute_uri(url)
         if device.extension:
             dtmf_tones = 'wwww' + device.extension + '#'
             self.client.calls.create(to=device.number.as_e164,
