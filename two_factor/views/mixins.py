@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import PermissionDenied
@@ -55,6 +56,10 @@ class OTPRequiredMixin(object):
         return self.verification_url and str(self.verification_url)
 
     def dispatch(self, request, *args, **kwargs):
+
+        if hasattr(settings, 'OTP_REQUIRED') and settings.OTP_REQUIRED is False:
+            return super(OTPRequiredMixin, self).dispatch(request, *args, **kwargs)
+
         if not request.user or not request.user.is_authenticated or \
                 (not request.user.is_verified() and default_device(request.user)):
             # If the user has not authenticated raise or redirect to the login
