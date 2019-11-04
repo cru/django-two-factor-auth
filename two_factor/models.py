@@ -47,9 +47,10 @@ def get_available_yubikey_methods():
 
 
 def get_available_methods():
-    methods = [('generator', _('Token generator'))]
+    methods = []
     methods.extend(get_available_phone_methods())
     methods.extend(get_available_yubikey_methods())
+    methods.append(('generator', _('Google Authenticator')))
     return methods
 
 
