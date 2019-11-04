@@ -44,7 +44,8 @@ class PhoneNumberMethodForm(forms.Form):
 class PhoneNumberCallForm(ModelForm):
     # Cannot use PhoneNumberField, as it produces a PhoneNumber object, which cannot be serialized.
     number = forms.CharField(label=_("Phone Number"),
-                             validators=[validate_international_phonenumber])
+                             validators=[validate_international_phonenumber],
+                             widget=forms.TextInput(attrs={'placeholder': '+1403123XXXX'}))
 
     class Meta:
         model = PhoneDevice
@@ -65,7 +66,8 @@ class PhoneNumberCallForm(ModelForm):
 class PhoneNumberSMSForm(ModelForm):
     # Cannot use PhoneNumberField, as it produces a PhoneNumber object, which cannot be serialized.
     number = forms.CharField(label=_("Phone Number"),
-                             validators=[validate_international_phonenumber])
+                             validators=[validate_international_phonenumber],
+                             widget=forms.TextInput(attrs={'placeholder': '+1403123XXXX'}))
 
     class Meta:
         model = PhoneDevice
