@@ -60,7 +60,7 @@ class PhoneNumberCallForm(ModelForm):
                                              validators=[validate_extension],
                                              widget=forms.TextInput(attrs={'placeholder': 'ext',
                                                                            'style': "width: 60px",
-                                                                           'maxlength': 4}))
+                                                                           'maxlength': 5}))
 
 
 class PhoneNumberSMSForm(ModelForm):

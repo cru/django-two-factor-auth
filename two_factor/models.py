@@ -27,7 +27,7 @@ PHONE_METHODS = (
     ('sms', _('Text Message')),
 )
 
-ext_validator = RegexValidator(r'^[0-9]{0,4}$', "Extension must be blank or up to 4 numeric values")
+ext_validator = RegexValidator(r'^[0-9]{0,5}$', "Extension must be blank or up to 5 numeric values")
 
 
 def get_available_phone_methods():
@@ -71,7 +71,7 @@ class PhoneDevice(Device):
         app_label = 'two_factor'
 
     number = PhoneNumberField()
-    extension = models.CharField(max_length=4, validators=[ext_validator],
+    extension = models.CharField(max_length=5, validators=[ext_validator],
                                  blank=True, verbose_name=_('extension'))
     key = models.CharField(max_length=40,
                            validators=[key_validator],
