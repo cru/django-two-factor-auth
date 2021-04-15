@@ -59,7 +59,7 @@ class PhoneNumberCallForm(ModelForm):
                                              help_text="*Leave blank if none",
                                              validators=[validate_extension],
                                              widget=forms.TextInput(attrs={'placeholder': 'ext',
-                                                                           'style': "width: 60px",
+                                                                           'style': "width: 80px",
                                                                            'maxlength': 5}))
 
 
