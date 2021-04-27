@@ -15,4 +15,4 @@ validate_international_phonenumber.message = \
     _('Please enter a valid phone number, including your country code '
       'starting with + or 00.')
 
-validate_extension = RegexValidator(r'^[0-9]{0,4}$', 'Extension must be left blank or consist of 1-4 numeric values')
+validate_extension = RegexValidator(r'^[0-9]{0,5}$', 'Extension must be left blank or consist of 1-5 numeric values')
